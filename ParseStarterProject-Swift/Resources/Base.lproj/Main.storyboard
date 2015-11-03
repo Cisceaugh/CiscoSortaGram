@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,14 +18,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="32C-fo-fHC">
-                                <rect key="frame" x="180" y="20" width="240" height="128"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="32C-fo-fHC">
+                                <rect key="frame" x="60" y="60" width="480" height="480"/>
                                 <animations/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z5x-Us-bVz">
+                                <rect key="frame" x="60" y="60" width="480" height="480"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <connections>
+                                    <action selector="imageViewButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kd2-yn-tsV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="32C-fo-fHC" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.8" id="DmN-Lk-OC1"/>
+                            <constraint firstItem="32C-fo-fHC" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="F27-xn-tm7"/>
+                            <constraint firstItem="32C-fo-fHC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MWN-kf-GdU"/>
+                            <constraint firstItem="Z5x-Us-bVz" firstAttribute="height" secondItem="32C-fo-fHC" secondAttribute="height" id="NTh-QC-bhL"/>
+                            <constraint firstItem="Z5x-Us-bVz" firstAttribute="centerY" secondItem="32C-fo-fHC" secondAttribute="centerY" id="Qyd-j5-p1p"/>
+                            <constraint firstItem="Z5x-Us-bVz" firstAttribute="centerX" secondItem="32C-fo-fHC" secondAttribute="centerX" id="Sse-FU-ztD"/>
+                            <constraint firstItem="32C-fo-fHC" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="b6F-Zp-lln"/>
+                            <constraint firstItem="Z5x-Us-bVz" firstAttribute="width" secondItem="32C-fo-fHC" secondAttribute="width" id="t7Q-jx-4m0"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="32C-fo-fHC" id="wed-M8-6A0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

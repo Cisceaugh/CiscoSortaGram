@@ -12,15 +12,47 @@
 import UIKit
 import Parse
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    @IBOutlet weak var imageView: UIImageView!
+    
+    
+    @IBAction func imageViewButtonPressed(sender: UIButton) {
+//        var imagePicker = UIImagePickerController()
+//        imagePicker.delegate = self
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let object = PFObject(className: "Status")
+        object["text"] = "Flamingo"
+        object.saveInBackgroundWithBlock { (success, error) -> Void in
+            print("Hello Flamingo")
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    func checkForCamera() -> Bool {
+        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+            // say stuff in here that you want to happen if the camera is available
+            
+            
+            
+            
+            
+            
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func displayActionController(){
+        
     }
 }
+
