@@ -18,8 +18,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     
     @IBAction func imageViewButtonPressed(sender: UIButton) {
-//        var imagePicker = UIImagePickerController()
-//        imagePicker.delegate = self
+
     }
     
     override func viewDidLoad() {
@@ -39,7 +38,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func checkForCamera() -> Bool {
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             // say stuff in here that you want to happen if the camera is available
-            
+            presentActionController()
             
             
             
@@ -47,12 +46,45 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
             return true
         } else {
+            //say stuff in here that you want to happen if the camera is NOT available
+            
+            
+            
             return false
         }
     }
-    
-    func displayActionController(){
+        //presents the action controller
+    func presentActionController(){
+        let actionController = UIAlertController(title: "", message: "Camera or Library?", preferredStyle:.Alert)
         
+        let cameraAction = UIAlertAction(title: "", style:.Default) {(alert) -> Void in
+            self.presentImagePickerFor(.Camera)
+        }
+        
+        let photoLibrary = UIAlertAction(title: "Photo Library", style:.Default) {(alert) -> Void in
+            self.presentImagePickerFor(.PhotoLibrary)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style:.Destructive, handler: nil)
+        
+        actionController.addAction(cameraAction)
+        actionController.addAction(photoLibrary)
+        actionController.addAction(cancelAction)
+        
+        self.presentViewController(actionController, animated: true, completion: nil)
+
+    }
+    
+    func presentImagePickerFor(sourceType: UIImagePickerControllerSourceType) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.sourceType = sourceType
+        imagePickerController.delegate = self
+        self.presentViewController(imagePickerController, animated: true, completion: nil)
+        
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
 
