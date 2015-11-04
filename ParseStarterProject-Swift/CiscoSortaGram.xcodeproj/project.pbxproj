@@ -19,6 +19,8 @@
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
 		C1049D501BE8247E004C9F99 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1049D4F1BE8247E004C9F99 /* Constants.swift */; settings = {ASSET_TAGS = (); }; };
 		C1049D521BE82E6E004C9F99 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1049D511BE82E6E004C9F99 /* Splash.storyboard */; settings = {ASSET_TAGS = (); }; };
+		C1049D8E1BE926CC004C9F99 /* FilterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1049D8D1BE926CC004C9F99 /* FilterService.swift */; settings = {ASSET_TAGS = (); }; };
+		C1049D901BE93174004C9F99 /* UIImageExtenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1049D8F1BE93174004C9F99 /* UIImageExtenstions.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		C1049D4F1BE8247E004C9F99 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C1049D511BE82E6E004C9F99 /* Splash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
+		C1049D8D1BE926CC004C9F99 /* FilterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterService.swift; sourceTree = "<group>"; };
+		C1049D8F1BE93174004C9F99 /* UIImageExtenstions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtenstions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
+				C1049D8D1BE926CC004C9F99 /* FilterService.swift */,
+				C1049D8F1BE93174004C9F99 /* UIImageExtenstions.swift */,
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
 				C1049D4F1BE8247E004C9F99 /* Constants.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
@@ -211,6 +217,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
+				C1049D8E1BE926CC004C9F99 /* FilterService.swift in Sources */,
+				C1049D901BE93174004C9F99 /* UIImageExtenstions.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				C1049D501BE8247E004C9F99 /* Constants.swift in Sources */,
 			);

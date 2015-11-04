@@ -18,8 +18,53 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     
     @IBAction func imageViewButtonPressed(sender: UIButton) {
-
+        checkForCamera()
     }
+    
+    @IBAction func filterButtonPressed(sender: UIButton) {
+        print("Success")
+        
+        //Add safety for image
+    }
+    
+    func presentFilterAlert() {
+        
+        let alertController = UIAlertController(title: "Filters", message: "Pick a filter", preferredStyle: .ActionSheet)
+        
+        let vintageFilterAction = UIAlertAction(title: "Vintage", style: .Default, handler: { (alert) -> Void in
+            FilterService.applyVintageEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
+                if let filteredImage = filteredImage{
+                    self.imageView.image = filteredImage
+                }
+            })
+        })
+        
+        let BWFilterAction = UIAlertAction(title: "Black and White", style: .Default, handler: { (alert) -> Void in
+            FilterService.applyBWEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
+                if let filteredImage = filteredImage{
+                    self.imageView.image = filteredImage
+                }
+            })
+        })
+        let chromeFilterAction = UIAlertAction(title: "Chrome", style: .Default, handler: { (alert) -> Void in
+            FilterService.applyChromeEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
+                if let filteredImage = filteredImage{
+                    self.imageView.image = filteredImage
+                }
+            })
+            
+        })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        
+        alertController.addAction(vintageFilterAction)
+        alertController.addAction(BWFilterAction)
+        alertController.addAction(chromeFilterAction)
+        alertController.addAction(cancelAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+        
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +73,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         object["text"] = "Flamingo"
         object.saveInBackgroundWithBlock { (success, error) -> Void in
             print("Hello Flamingo")
+
         }
     }
 
@@ -35,22 +81,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.didReceiveMemoryWarning()
     }
     
-    func checkForCamera() -> Bool {
+    func checkForCamera() {
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             // say stuff in here that you want to happen if the camera is available
-            presentActionController()
-            
-            
-            
-            
-            
-            return true
+            self.presentActionController()
+
         } else {
             //say stuff in here that you want to happen if the camera is NOT available
-            
-            
-            
-            return false
+            self.presentImagePickerFor(.PhotoLibrary)
+           
         }
     }
         //presents the action controller
@@ -86,5 +125,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-}
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        self.imageView.image = image
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 
+}

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yaJ-ag-IcI">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
@@ -31,26 +31,72 @@
                                     <action selector="imageViewButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kd2-yn-tsV"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4nr-Fx-cRm">
+                                <rect key="frame" x="277" y="548" width="46" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="cqc-FM-5r1"/>
+                                    <constraint firstAttribute="height" constant="30" id="eZl-O5-kFR"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="84" placeholderIntrinsicHeight="30" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lRZ-yg-tcF">
+                                <rect key="frame" x="185" y="548" width="84" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="5Uh-Uc-EMt"/>
+                                    <constraint firstAttribute="width" constant="84" id="aSz-VD-pRs"/>
+                                </constraints>
+                                <state key="normal" title="Apply Filter"/>
+                                <connections>
+                                    <action selector="filterButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oHR-Xc-aCP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="4nr-Fx-cRm" firstAttribute="top" secondItem="Z5x-Us-bVz" secondAttribute="bottom" constant="8" id="6qE-It-Fq1"/>
+                            <constraint firstItem="lRZ-yg-tcF" firstAttribute="centerY" secondItem="4nr-Fx-cRm" secondAttribute="centerY" id="8qI-1F-a06"/>
                             <constraint firstItem="32C-fo-fHC" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.8" id="DmN-Lk-OC1"/>
                             <constraint firstItem="32C-fo-fHC" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="F27-xn-tm7"/>
+                            <constraint firstItem="4nr-Fx-cRm" firstAttribute="leading" secondItem="lRZ-yg-tcF" secondAttribute="trailing" constant="8" id="HN1-J0-L9G"/>
                             <constraint firstItem="32C-fo-fHC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MWN-kf-GdU"/>
                             <constraint firstItem="Z5x-Us-bVz" firstAttribute="height" secondItem="32C-fo-fHC" secondAttribute="height" id="NTh-QC-bhL"/>
                             <constraint firstItem="Z5x-Us-bVz" firstAttribute="centerY" secondItem="32C-fo-fHC" secondAttribute="centerY" id="Qyd-j5-p1p"/>
                             <constraint firstItem="Z5x-Us-bVz" firstAttribute="centerX" secondItem="32C-fo-fHC" secondAttribute="centerX" id="Sse-FU-ztD"/>
+                            <constraint firstItem="4nr-Fx-cRm" firstAttribute="leading" secondItem="lRZ-yg-tcF" secondAttribute="trailing" constant="8" id="VWa-iH-QoU"/>
                             <constraint firstItem="32C-fo-fHC" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="b6F-Zp-lln"/>
+                            <constraint firstItem="4nr-Fx-cRm" firstAttribute="centerX" secondItem="Z5x-Us-bVz" secondAttribute="centerX" id="nnc-p2-4sJ"/>
                             <constraint firstItem="Z5x-Us-bVz" firstAttribute="width" secondItem="32C-fo-fHC" secondAttribute="width" id="t7Q-jx-4m0"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="ZwY-Lm-tBL"/>
                     <connections>
                         <outlet property="imageView" destination="32C-fo-fHC" id="wed-M8-6A0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1055" y="278"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="W0J-wS-4Y3">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="yaJ-ag-IcI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="X3x-7s-CSi">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="OOH-1m-JOH"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IcX-bH-jy2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="243" y="278"/>
         </scene>
     </scenes>
 </document>
