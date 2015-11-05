@@ -17,10 +17,11 @@
 		81BA81791A49E0DB00E65899 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA81781A49E0DB00E65899 /* AudioToolbox.framework */; };
 		81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */; };
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
-		C1049D501BE8247E004C9F99 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1049D4F1BE8247E004C9F99 /* Constants.swift */; settings = {ASSET_TAGS = (); }; };
 		C1049D521BE82E6E004C9F99 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1049D511BE82E6E004C9F99 /* Splash.storyboard */; settings = {ASSET_TAGS = (); }; };
 		C1049D8E1BE926CC004C9F99 /* FilterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1049D8D1BE926CC004C9F99 /* FilterService.swift */; settings = {ASSET_TAGS = (); }; };
 		C1049D901BE93174004C9F99 /* UIImageExtenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1049D8F1BE93174004C9F99 /* UIImageExtenstions.swift */; settings = {ASSET_TAGS = (); }; };
+		C14E88871BEAC57700DCDBEB /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14E88861BEAC57700DCDBEB /* ImageResizer.swift */; settings = {ASSET_TAGS = (); }; };
+		C14E88891BEACB3800DCDBEB /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14E88881BEACB3800DCDBEB /* API.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,10 +40,11 @@
 		81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
-		C1049D4F1BE8247E004C9F99 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C1049D511BE82E6E004C9F99 /* Splash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		C1049D8D1BE926CC004C9F99 /* FilterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterService.swift; sourceTree = "<group>"; };
 		C1049D8F1BE93174004C9F99 /* UIImageExtenstions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtenstions.swift; sourceTree = "<group>"; };
+		C14E88861BEAC57700DCDBEB /* ImageResizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageResizer.swift; sourceTree = "<group>"; };
+		C14E88881BEACB3800DCDBEB /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,8 +98,9 @@
 				C1049D8D1BE926CC004C9F99 /* FilterService.swift */,
 				C1049D8F1BE93174004C9F99 /* UIImageExtenstions.swift */,
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
-				C1049D4F1BE8247E004C9F99 /* Constants.swift */,
+				C14E88881BEACB3800DCDBEB /* API.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
+				C14E88861BEAC57700DCDBEB /* ImageResizer.swift */,
 				C1049D511BE82E6E004C9F99 /* Splash.storyboard */,
 			);
 			path = ParseStarterProject;
@@ -220,7 +223,8 @@
 				C1049D8E1BE926CC004C9F99 /* FilterService.swift in Sources */,
 				C1049D901BE93174004C9F99 /* UIImageExtenstions.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
-				C1049D501BE8247E004C9F99 /* Constants.swift in Sources */,
+				C14E88871BEAC57700DCDBEB /* ImageResizer.swift in Sources */,
+				C14E88891BEACB3800DCDBEB /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

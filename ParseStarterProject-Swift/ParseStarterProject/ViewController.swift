@@ -18,13 +18,47 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     
     @IBAction func imageViewButtonPressed(sender: UIButton) {
-        checkForCamera()
+        if self.imageView.image == nil {
+                checkForCamera()
+        }
+        else {
+            presentUploadAlert()
+        }
     }
     
     @IBAction func filterButtonPressed(sender: UIButton) {
         print("Success")
+        if self.imageView.image != nil {
+        presentFilterAlert()
+        }
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        //Add safety for image
+        let object = PFObject(className: "Status")
+        object["text"] = "Flamingo"
+        object.saveInBackgroundWithBlock { (success, error) -> Void in
+            print("Hello Flamingo")
+
+        }
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    //MARK: Functions
+    
+    func presentUploadAlert(){
+        let alertController = UIAlertController(title: "", message: "Image successfully uploaded", preferredStyle: .Alert)
+        let okButton = UIAlertAction(title: "Ok", style: .Default) { (alert) -> Void in
+            self.checkForCamera()
+
+        }
+        alertController.addAction(okButton)
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     func presentFilterAlert() {
@@ -65,21 +99,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
 
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let object = PFObject(className: "Status")
-        object["text"] = "Flamingo"
-        object.saveInBackgroundWithBlock { (success, error) -> Void in
-            print("Hello Flamingo")
-
-        }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     func checkForCamera() {
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
