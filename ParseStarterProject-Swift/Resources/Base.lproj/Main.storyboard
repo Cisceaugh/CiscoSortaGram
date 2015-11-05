@@ -6,10 +6,10 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Home" id="BYZ-38-t0r" customClass="ViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -80,10 +80,10 @@
             </objects>
             <point key="canvasLocation" x="1055" y="278"/>
         </scene>
-        <!--Item-->
+        <!--Gallery-->
         <scene sceneID="PCo-Dt-w3J">
             <objects>
-                <viewController id="sBY-D2-lE9" sceneMemberID="viewController">
+                <viewController title="Gallery" id="sBY-D2-lE9" customClass="GalleryViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Vbw-xW-SEd"/>
                         <viewControllerLayoutGuide type="bottom" id="2e9-60-25C"/>
