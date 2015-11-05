@@ -18,31 +18,42 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     
     @IBAction func imageViewButtonPressed(sender: UIButton) {
-        if self.imageView.image == nil {
-                checkForCamera()
-        }
-        else {
-            presentUploadAlert()
-        }
+        checkForCamera()
+        
+        
     }
     
     @IBAction func filterButtonPressed(sender: UIButton) {
-        print("Success")
+        print("Filtration success")
         if self.imageView.image != nil {
         presentFilterAlert()
         }
     }
     
+    @IBAction func uploadImage(sender: UIButton) {
+        if let _ = self.imageView.image{
+
+        sender.enabled = false
+        let newImage = ImageResizer.resizeImage(self.imageView.image!, size: CGSize(width: 600, height: 600))
+        print(newImage?.size)
+        API.uploadImage(newImage!) { (success) -> () in
+            self.presentUploadAlert()
+            sender.enabled = true
+            }
+        } else {
+            noImageToUploadAlert()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let object = PFObject(className: "Status")
-        object["text"] = "Flamingo"
-        object.saveInBackgroundWithBlock { (success, error) -> Void in
-            print("Hello Flamingo")
-
-        }
+//        let object = PFObject(className: "Status")
+//        object["text"] = "Flamingo"
+//        object.saveInBackgroundWithBlock { (success, error) -> Void in
+//            print("Hello Flamingo")
+//        
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,14 +62,26 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     //MARK: Functions
     
+    func noImageToUploadAlert(){
+        let alertController = UIAlertController(title: "", message: "Whoops, no image to upload!", preferredStyle: .Alert)
+        let okButton = UIAlertAction(title: "Ok", style: .Default) { (alert) -> Void in
+        }
+        
+        alertController.addAction(okButton)
+        self.presentViewController(alertController, animated: true, completion: nil)
+        
+    }
+    
     func presentUploadAlert(){
         let alertController = UIAlertController(title: "", message: "Image successfully uploaded", preferredStyle: .Alert)
         let okButton = UIAlertAction(title: "Ok", style: .Default) { (alert) -> Void in
-            self.checkForCamera()
 
         }
         alertController.addAction(okButton)
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.presentViewController(alertController, animated: true) { () -> Void in
+            ImageResizer.resizeImage(self.imageView.image!, size: CGSize(width: 0.7, height: 0.7))
+            
+        }
     }
     
     func presentFilterAlert() {
@@ -88,6 +111,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             })
             
         })
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         
         alertController.addAction(vintageFilterAction)
