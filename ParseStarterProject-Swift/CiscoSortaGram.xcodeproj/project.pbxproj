@@ -152,6 +152,7 @@
 		C14E888C1BEAE32E00DCDBEB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C14E88881BEACB3800DCDBEB /* API.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -162,7 +163,6 @@
 				C1049D8D1BE926CC004C9F99 /* FilterService.swift */,
 				C1049D8F1BE93174004C9F99 /* UIImageExtenstions.swift */,
 				C14E88861BEAC57700DCDBEB /* ImageResizer.swift */,
-				C14E88881BEACB3800DCDBEB /* API.swift */,
 			);
 			name = Image;
 			sourceTree = "<group>";
