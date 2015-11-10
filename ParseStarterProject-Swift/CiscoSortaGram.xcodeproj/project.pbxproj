@@ -17,13 +17,14 @@
 		81BA81791A49E0DB00E65899 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA81781A49E0DB00E65899 /* AudioToolbox.framework */; };
 		81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */; };
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
-		C1049D521BE82E6E004C9F99 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1049D511BE82E6E004C9F99 /* Splash.storyboard */; settings = {ASSET_TAGS = (); }; };
-		C1049D8E1BE926CC004C9F99 /* FilterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1049D8D1BE926CC004C9F99 /* FilterService.swift */; settings = {ASSET_TAGS = (); }; };
-		C1049D901BE93174004C9F99 /* UIImageExtenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1049D8F1BE93174004C9F99 /* UIImageExtenstions.swift */; settings = {ASSET_TAGS = (); }; };
-		C14E88871BEAC57700DCDBEB /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14E88861BEAC57700DCDBEB /* ImageResizer.swift */; settings = {ASSET_TAGS = (); }; };
-		C14E88891BEACB3800DCDBEB /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14E88881BEACB3800DCDBEB /* API.swift */; settings = {ASSET_TAGS = (); }; };
-		C14E88911BEAE52500DCDBEB /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14E88901BEAE52500DCDBEB /* GalleryViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		C14E88941BEB0E2900DCDBEB /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14E88931BEB0E2900DCDBEB /* CollectionViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		C1049D521BE82E6E004C9F99 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1049D511BE82E6E004C9F99 /* Splash.storyboard */; };
+		C1049D8E1BE926CC004C9F99 /* FilterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1049D8D1BE926CC004C9F99 /* FilterService.swift */; };
+		C1049D901BE93174004C9F99 /* UIImageExtenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1049D8F1BE93174004C9F99 /* UIImageExtenstions.swift */; };
+		C14E88871BEAC57700DCDBEB /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14E88861BEAC57700DCDBEB /* ImageResizer.swift */; };
+		C14E88891BEACB3800DCDBEB /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14E88881BEACB3800DCDBEB /* API.swift */; };
+		C14E88911BEAE52500DCDBEB /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14E88901BEAE52500DCDBEB /* GalleryViewController.swift */; };
+		C14E88941BEB0E2900DCDBEB /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14E88931BEB0E2900DCDBEB /* CollectionViewCell.swift */; };
+		C1D9F2A31BF0D06500485E94 /* FilteredImagePreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D9F2A21BF0D06400485E94 /* FilteredImagePreviewCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		C14E88881BEACB3800DCDBEB /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		C14E88901BEAE52500DCDBEB /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		C14E88931BEB0E2900DCDBEB /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		C1D9F2A21BF0D06400485E94 /* FilteredImagePreviewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilteredImagePreviewCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,7 +145,8 @@
 			isa = PBXGroup;
 			children = (
 				81BA814C1A49DA1800E65899 /* HomeViewController.swift */,
-				C14E88921BEB0E0600DCDBEB /* CollectionView */,
+				C1D9F2A21BF0D06400485E94 /* FilteredImagePreviewCollectionViewCell.swift */,
+				C14E88921BEB0E0600DCDBEB /* GalleryCollectionView */,
 				C14E888D1BEAE35600DCDBEB /* Image */,
 			);
 			name = Controller;
@@ -167,13 +170,13 @@
 			name = Image;
 			sourceTree = "<group>";
 		};
-		C14E88921BEB0E0600DCDBEB /* CollectionView */ = {
+		C14E88921BEB0E0600DCDBEB /* GalleryCollectionView */ = {
 			isa = PBXGroup;
 			children = (
 				C14E88901BEAE52500DCDBEB /* GalleryViewController.swift */,
 				C14E88931BEB0E2900DCDBEB /* CollectionViewCell.swift */,
 			);
-			name = CollectionView;
+			name = GalleryCollectionView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +270,7 @@
 			files = (
 				81BA814D1A49DA1800E65899 /* HomeViewController.swift in Sources */,
 				C14E88911BEAE52500DCDBEB /* GalleryViewController.swift in Sources */,
+				C1D9F2A31BF0D06500485E94 /* FilteredImagePreviewCollectionViewCell.swift in Sources */,
 				C14E88941BEB0E2900DCDBEB /* CollectionViewCell.swift in Sources */,
 				C1049D8E1BE926CC004C9F99 /* FilterService.swift in Sources */,
 				C1049D901BE93174004C9F99 /* UIImageExtenstions.swift in Sources */,

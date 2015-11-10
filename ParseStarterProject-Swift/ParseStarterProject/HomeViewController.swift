@@ -12,26 +12,34 @@
 import UIKit
 import Parse
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate , UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    //MARK: Properties
+    
+    var filterFunctions = [FilterService.applyVintageEffect, FilterService.applyChromeEffect, FilterService.applyBWEffect]
+    var filteredImageInstances = [FilteredImagePreviewCollectionViewCell]()
+    
+    //MARK: IBOutlets
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var filterPreviewCollectionView: UICollectionView!
     
+    //MARK: IBActions
     
     @IBAction func imageViewButtonPressed(sender: UIButton) {
         checkForCamera()
-        
-        
     }
     
     @IBAction func filterButtonPressed(sender: UIButton) {
         print("Filtration success")
-        if self.imageView.image != nil {
+        //safety for image
+        if let _ = self.imageView.image {
         presentFilterAlert()
         }
     }
     
     @IBAction func uploadImage(sender: UIButton) {
-        if let _ = self.imageView.image{
+        if let _ = self.imageView.image {
 
         sender.enabled = false
         let newImage = ImageResizer.resizeImage(self.imageView.image!, size: CGSize(width: 600, height: 600))
@@ -45,15 +53,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let object = PFObject(className: "Status")
-//        object["text"] = "Flamingo"
-//        object.saveInBackgroundWithBlock { (success, error) -> Void in
-//            print("Hello Flamingo")
-//        
-//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,7 +65,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     //MARK: Functions
     
-    func noImageToUploadAlert(){
+        //MARK: Alert related functions
+    func noImageToUploadAlert() {
         let alertController = UIAlertController(title: "", message: "Whoops, no image to upload!", preferredStyle: .Alert)
         let okButton = UIAlertAction(title: "Ok", style: .Default) { (alert) -> Void in
         }
@@ -72,7 +76,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
-    func presentUploadAlert(){
+    func presentUploadAlert() {
         let alertController = UIAlertController(title: "", message: "Image successfully uploaded", preferredStyle: .Alert)
         let okButton = UIAlertAction(title: "Ok", style: .Default) { (alert) -> Void in
 
@@ -109,7 +113,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     self.imageView.image = filteredImage
                 }
             })
-            
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
@@ -122,45 +125,57 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.presentViewController(alertController, animated: true, completion: nil)
         
     }
-
     
     func checkForCamera() {
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             // say stuff in here that you want to happen if the camera is available
             self.presentActionController()
-
+            
         } else {
             //say stuff in here that you want to happen if the camera is NOT available
             self.presentImagePickerFor(.PhotoLibrary)
-           
+            
         }
     }
-        //presents the action controller
-    func presentActionController(){
+    
+    //presents the action controller (called when there is a camera)
+    func presentActionController() {
+        
+        //capture an alert controller init w/ my message and an alert style
         let actionController = UIAlertController(title: "", message: "Camera or Library?", preferredStyle:.Alert)
         
-        let cameraAction = UIAlertAction(title: "", style:.Default) {(alert) -> Void in
+        //camera button
+        let cameraAction = UIAlertAction(title: "Camera", style:.Default) {(alert) -> Void in
+            
+            //make action for presenting Camera
             self.presentImagePickerFor(.Camera)
         }
-        
+        //make action for presenting PhotoLibrary
         let photoLibrary = UIAlertAction(title: "Photo Library", style:.Default) {(alert) -> Void in
             self.presentImagePickerFor(.PhotoLibrary)
         }
-        
+        //cancel action
         let cancelAction = UIAlertAction(title: "Cancel", style:.Destructive, handler: nil)
         
+        //add actions
         actionController.addAction(cameraAction)
         actionController.addAction(photoLibrary)
         actionController.addAction(cancelAction)
         
+        //present this view on whatever is calling this func with our actionController
         self.presentViewController(actionController, animated: true, completion: nil)
-
+        
     }
     
+    //presents image picker for the source type passed in
     func presentImagePickerFor(sourceType: UIImagePickerControllerSourceType) {
+        //capture UIImagePickerController
         let imagePickerController = UIImagePickerController()
+        //set its source type to that which is passed into this function
         imagePickerController.sourceType = sourceType
+        //make this VC the delegate object of this UIImagePickerController
         imagePickerController.delegate = self
+        //present this PickerController
         self.presentViewController(imagePickerController, animated: true, completion: nil)
         
     }
@@ -172,6 +187,38 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         self.imageView.image = image
         self.dismissViewControllerAnimated(true, completion: nil)
+        self.filterPreviewCollectionView.reloadData()
     }
-
+    
+    //MARK: CollectionView datasource functions
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return filterFunctions.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("filteredImagePreview", forIndexPath: indexPath) as! FilteredImagePreviewCollectionViewCell
+        
+        let filter = filterFunctions[indexPath.row]
+        if let image = imageView.image {
+            filter(image, completion: {(filteredImage, filterName) -> Void in
+                cell.filteredImage.image = filteredImage
+            })
+        }
+        
+        
+        print(cell)
+        return cell
+    }
+    
+    //MARK: CollectionView delegate functions
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        filterFunctions[indexPath.row](self.imageView.image!, completion: { (filteredImage, name) -> Void in
+            if let filteredImage = filteredImage {
+                self.imageView.image = filteredImage
+            }
+        })
+    }
 }
+
